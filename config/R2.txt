@@ -1,1 +1,34 @@
+! =====================================================
+! Device: R2
+! Role: ABR (Backbone ↔ Area 1)
+! Lab: OSPF Multi-Area Enterprise
+! =====================================================
 
+hostname R2
+
+! ---------- Interfaces ----------
+interface Loopback0
+ ip address 2.2.2.2 255.255.255.255
+
+interface GigabitEthernet0/0
+ description LAN Human Resources
+ ip address 192.168.20.1 255.255.255.0
+
+interface GigabitEthernet0/1
+ description Backbone Link to R1
+ ip address 10.0.0.2 255.255.255.252
+ ip ospf network point-to-point
+
+interface GigabitEthernet0/2
+ description Link to Area 1 (Branch A)
+ ip address 10.0.0.5 255.255.255.252
+ ip ospf network point-to-point
+
+! ---------- OSPF ----------
+router ospf 1
+ router-id 2.2.2.2
+ log-adjacency-changes
+ passive-interface GigabitEthernet0/0
+ network 10.0.0.0 0.0.0.3 area 0
+ network 10.0.0.4 0.0.0.3 area 1
+ network 192.168.20.0 0.0.0.255 area 3
