@@ -1,1 +1,28 @@
+! =====================================================
+! Device: R4
+! Role: Internal Router (Area 2)
+! Lab: OSPF Multi-Area Enterprise
+! =====================================================
 
+hostname R4
+
+! ---------- Interfaces ----------
+interface Loopback0
+ ip address 4.4.4.4 255.255.255.255
+
+interface GigabitEthernet0/0
+ description LAN Branch B
+ ip address 192.168.40.1 255.255.255.0
+
+interface GigabitEthernet0/1
+ description Uplink to R1
+ ip address 10.0.0.9 255.255.255.252
+ ip ospf network point-to-point
+
+! ---------- OSPF ----------
+router ospf 1
+ router-id 4.4.4.4
+ log-adjacency-changes
+ passive-interface GigabitEthernet0/0
+ network 10.0.0.8 0.0.0.3 area 2
+ network 192.168.40.0 0.0.0.255 area 2
