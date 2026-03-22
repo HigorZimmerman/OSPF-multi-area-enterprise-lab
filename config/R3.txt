@@ -1,1 +1,28 @@
+! =====================================================
+! Device: R3
+! Role: Internal Router (Area 1)
+! Lab: OSPF Multi-Area Enterprise
+! =====================================================
 
+hostname R3
+
+! ---------- Interfaces ----------
+interface Loopback0
+ ip address 3.3.3.3 255.255.255.255
+
+interface GigabitEthernet0/0
+ description LAN Branch A
+ ip address 192.168.30.1 255.255.255.0
+
+interface GigabitEthernet0/1
+ description Uplink to R2
+ ip address 10.0.0.6 255.255.255.252
+ ip ospf network point-to-point
+
+! ---------- OSPF ----------
+router ospf 1
+ router-id 3.3.3.3
+ log-adjacency-changes
+ passive-interface GigabitEthernet0/0
+ network 10.0.0.4 0.0.0.3 area 1
+ network 192.168.30.0 0.0.0.255 area 1
