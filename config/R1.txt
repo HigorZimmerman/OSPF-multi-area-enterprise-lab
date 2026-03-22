@@ -1,1 +1,34 @@
+! =====================================================
+! Device: R1
+! Role: ABR (Area Border Router)
+! Lab: OSPF Multi-Area Enterprise
+! =====================================================
 
+hostname R1
+
+! ---------- Interfaces ----------
+interface Loopback0
+ ip address 1.1.1.1 255.255.255.255
+
+interface GigabitEthernet0/0
+ description LAN Technology
+ ip address 192.168.10.1 255.255.255.0
+
+interface GigabitEthernet0/1
+ description Backbone Link to R2
+ ip address 10.0.0.1 255.255.255.252
+ ip ospf network point-to-point
+ ip ospf cost 50
+
+interface GigabitEthernet0/2
+ description Link to Area 2 (Branch B)
+ ip address 10.0.0.10 255.255.255.252
+
+! ---------- OSPF ----------
+router ospf 1
+ router-id 1.1.1.1
+ log-adjacency-changes
+ passive-interface GigabitEthernet0/0
+ network 10.0.0.0 0.0.0.3 area 0
+ network 10.0.0.8 0.0.0.3 area 2
+ network 192.168.10.0 0.0.0.255 area 4
