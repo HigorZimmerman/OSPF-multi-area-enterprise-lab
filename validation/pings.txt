@@ -1,0 +1,43 @@
+#### PC-LAN 10 >> Ping LAN20, 30, 40
+
+C:\>ping 192.168.30.30
+
+Pinging 192.168.30.30 with 32 bytes of data:
+
+Reply from 192.168.30.30: bytes=32 time=24ms TTL=125
+Reply from 192.168.30.30: bytes=32 time=12ms TTL=125
+Reply from 192.168.30.30: bytes=32 time=11ms TTL=125
+Reply from 192.168.30.30: bytes=32 time=12ms TTL=125
+
+Ping statistics for 192.168.30.30:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 11ms, Maximum = 24ms, Average = 14ms
+
+C:\>ping 192.168.20.210
+
+Pinging 192.168.20.210 with 32 bytes of data:
+
+Request timed out.
+Reply from 192.168.20.210: bytes=32 time=15ms TTL=126
+Reply from 192.168.20.210: bytes=32 time=1ms TTL=126
+Reply from 192.168.20.210: bytes=32 time<1ms TTL=126
+
+Ping statistics for 192.168.20.210:
+    Packets: Sent = 4, Received = 3, Lost = 1 (25% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 15ms, Average = 5ms
+
+C:\>ping 192.168.40.10
+
+Pinging 192.168.40.10 with 32 bytes of data:
+
+Reply from 192.168.40.10: bytes=32 time=14ms TTL=126
+Reply from 192.168.40.10: bytes=32 time=11ms TTL=126
+Reply from 192.168.40.10: bytes=32 time=11ms TTL=126
+Reply from 192.168.40.10: bytes=32 time=1ms TTL=126
+
+Ping statistics for 192.168.40.10:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 1ms, Maximum = 14ms, Average = 9ms
